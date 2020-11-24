@@ -1,40 +1,14 @@
-//Esto va en GenLauncher.java
+//Añadir a FxGen.java
+	//Constructor
 
-fxGenButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                ArrayList variables = new ArrayList<String>();
-                Map<String, String> env = System.getenv();
-                for (Map.Entry<String, String> entry : env.entrySet()) {
-                    if(entry.getKey().toLowerCase().contains("java")||entry.getKey().toLowerCase().contains("fx"))
-                    {
-                        variables.add(0,entry.getKey());
-                    }
-                    else {
-                        variables.add(entry.getKey());
-                    }
-                }
-                JComboBox jcb = new JComboBox(variables.toArray());
-                jcb.setEditable(true);
-                jcb.setSelectedItem("Select the JavaFX Variable");
-                JOptionPane alert = new JOptionPane();
-                UIManager.put("OptionPane.yesButtonText", "Accept");
-                UIManager.put("OptionPane.noButtonText", "Cancel");
-                System.out.println(alert.getBounds().getSize());
-                int option = alert.showConfirmDialog( null, jcb, "Select the JavaFX Variable", JOptionPane.YES_NO_OPTION);
-                if(option == 0)
-                {
-                        if(jcb.getSelectedItem().equals("Select the JavaFX Variable"))
-                        {
-                            System.out.println("null");
-                        }
-                        else
-                        {
-                            System.out.println("pasa string");
-                        }
-                }
-            }
-        });
+	public FxGen(Rectangle windowData,String systemVar) {
+	
 
-//
+	//junto a labels
+
+	JTextField sysVar = new JTextField();
+
+
+	//junto a textos de labels
+
+	sysVar.setText("--module-path ${"+systemVar+"} --add-modules=javafx.controls,javafx.fxml");
